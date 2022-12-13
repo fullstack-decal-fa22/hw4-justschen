@@ -8,14 +8,24 @@ const Feed = () => {
     // Refer to Hint 2 for more help!
 
     /* Use the map() function to render multiple Blocks! */
-    const posts = null; // TODO: edit this variable
+    const [posts, postState] = useState([]);
+
+    const update = (update) => {
+        const concat = [...posts]
+        concat.push(update)
+        postState(concat)
+        console.log(concat)
+    }
 
     return (
         <div>
-            <Menu></Menu>
+            <Menu update={update}></Menu>
 
             {/* Below is where all of your Blocks should render! */}
-            {posts}
+          
+            {posts.map((post) => (
+                <Block color={post.color}/>
+            ))}
         </div>
     );
 }
